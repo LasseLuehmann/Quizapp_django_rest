@@ -17,21 +17,21 @@ def listallsessions(request):
     return Response(data.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET'])
-def fetch_session(request, sessionid):
+# @api_view(['GET'])
+# def fetch_session(request, sessionid):
 
-    sessionID = Session.objects.filter(session_id=sessionid)
-    data = SessionSerializer(data=sessionID)
-    data.is_valid()
+#     sessionID = Session.objects.filter(session_id=sessionid)
+#     data = SessionSerializer(data=sessionID)
+#     data.is_valid()
 
-    question_id = [id for id in data.data['session_questions']]
-    score = 0
-    for id in question_id:
-        question = Question.objects.get(question_id = id)
-        points = QuestionSerializer(data = question)
-        points.is_valid()
-        score += points.data['score']
+#     question_id = [id for id in data.data['session_questions']]
+#     score = 0
+#     for id in question_id:
+#         question = Question.objects.get(question_id = id)
+#         points = QuestionSerializer(data = question)
+#         points.is_valid()
+#         points = points.data['score']
+#         if data.data['hint']
+#         score += points.data['score']
 
-    return Response(data.data, status=status.HTTP_200_OK)
-
-
+#     return Response(data.data, status=status.HTTP_200_OK)
